@@ -1,0 +1,19 @@
+{
+  "name": "sdftdusername.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SDFTDusername/SDFTDusername.github.io.git"
+  },
+  "author": "SDFTDusername",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SDFTDusername/SDFTDusername.github.io/issues"
+  },
+  "homepage": "https://github.com/SDFTDusername/SDFTDusername.github.io#readme",
+  "description": ""
+}
