@@ -10,6 +10,14 @@ body {
     */
 }
 
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
 .top-bar {
     position: absolute;
     left: 0;
@@ -19,8 +27,14 @@ body {
     background-color: rgba(0, 0, 0, 0.65);
     color: white;
     font-size: 3vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
 }
 
@@ -34,21 +48,32 @@ body {
 
 .app-list {
     height: 100%;
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: auto auto auto 10vh;
     grid-template-columns: auto auto auto 10vh;
+    -ms-grid-rows: auto auto auto auto 12vh;
     grid-template-rows: auto auto auto auto 12vh;
 }
 
 .app-container {
     width: 10vh;
     height: 12vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
 .app-icon {
     height: 10vh;
+    -webkit-filter: drop-shadow(0 1vh 1vh rgba(0, 0, 0, 0.5));
     filter: drop-shadow(0 1vh 1vh rgba(0, 0, 0, 0.5));
 }
 
