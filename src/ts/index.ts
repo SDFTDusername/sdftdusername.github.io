@@ -18,7 +18,6 @@ class AppComponent extends HTMLElement {
         image.className = "app-icon";
 
         const link = document.createElement("a");
-        
         link.href = this.getAttribute("href") || `/${appName}.html`;
             link.target = this.getAttribute("target") || "_self";
             link.className = "app-link";
@@ -37,16 +36,31 @@ class AppComponent extends HTMLElement {
 
 customElements.define("app-component", AppComponent);
 
-
 const wallpaperFactor = 1920 / 1080;
 const wallpaper = document.getElementById("wallpaper");
+
+const content = document.getElementById("content");
 
 function onResize() {
     if (wallpaper) {
         if (innerWidth / innerHeight > wallpaperFactor)
-            wallpaper.style.backgroundSize = `${innerWidth}px ${innerWidth / wallpaperFactor}px`;
+            wallpaper.style.backgroundSize = `${innerWidth + 4}px ${innerWidth / wallpaperFactor + 4}px`;
         else
-            wallpaper.style.backgroundSize = `${innerHeight * wallpaperFactor}px ${innerHeight}px`;
+            wallpaper.style.backgroundSize = `${innerHeight * wallpaperFactor + 4}px ${innerHeight + 4}px`;
+    }
+
+    if (content) {
+        // magic numbers
+        const contentWidth = innerWidth + (innerHeight / 100 * (-6 + 3));
+        const appWidth = innerHeight / 100 * (10 + 3);
+
+        const rowAppCount = Math.max(contentWidth / appWidth, 1);
+
+        const wholeRowAppCount = Math.floor(rowAppCount);
+        const remainderRowAppCount = rowAppCount - wholeRowAppCount;
+        
+        const contentOffset = (innerHeight / 100 * 3) + remainderRowAppCount * appWidth / 2;
+        content.style.left = `${contentOffset}px`;
     }
 }
 

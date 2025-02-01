@@ -2,14 +2,17 @@
 * Prefixed by https://autoprefixer.github.io
 * PostCSS: v8.4.14,
 * Autoprefixer: v10.4.7
-* Browsers: last 10000 versions
+* Browsers: last 10 versions
 */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     width: 100vw;
     height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
     margin: 0;
+    overflow: hidden;
 }
 
 * {
@@ -21,63 +24,53 @@ body {
 
 .wallpaper {
     position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url("/src/img/wallpaper.jpg");
+    top: -1vh;
+    left: -1vh;
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5))), url("/src/img/wallpaper.jpg");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
     background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-    width: 100vw;
-    height: 100vh;
+    background-position: center;
+    width: calc(100vw + 2vh);
+    height: calc(100vh + 2vh);
 }
 
 .top-bar {
     position: absolute;
-    left: 0;
+    left: -1vh;
     top: 0;
-    width: 100vw;
+    width: calc(100vw + 2vh);
     height: 5vh;
     background-color: rgba(0, 0, 0, 0.65);
     color: white;
+    -webkit-box-shadow: 0 0.5vh 0.8vh rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0.5vh 0.8vh rgba(0, 0, 0, 0.5);
     font-size: 3vh;
+    font-weight: bold;
     display: -webkit-box;
     display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -moz-box;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    -webkit-align-items: center;
-       -moz-box-align: center;
             align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    -webkit-justify-content: center;
-       -moz-box-pack: center;
             justify-content: center;
 }
 
 .content {
     position: absolute;
-    left: 3vh;
     top: 8vh;
-    width: -webkit-calc(100vw - 6vh);
-    width: -moz-calc(100vw - 6vh);
     width: calc(100vw - 6vh);
 }
 
 .app-list {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -moz-box;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
-            -webkit-flex-flow: row wrap;
-               -moz-box-orient: horizontal;
-               -moz-box-direction: normal;
             flex-flow: row wrap;
     gap: 6vh 3vh;
 }
@@ -87,20 +80,13 @@ body {
     height: 10vh;
     display: -webkit-box; 
     display: -ms-flexbox;
-    display: -webkit-flex;
-    display: -moz-box;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-       -moz-box-orient: vertical;
-       -moz-box-direction: normal;
             flex-direction: column;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    -webkit-align-items: center;
-       -moz-box-align: center;
             align-items: center;
 }
 
@@ -115,14 +101,15 @@ body {
     /*-webkit-border-radius: 1.8vh;
        -moz-border-radius: 1.8vh;
             border-radius: 1.8vh;*/
-    -webkit-filter: drop-shadow(0 1vh 1vh rgba(0, 0, 0, 0.5));
-    filter: drop-shadow(0 1vh 1vh rgba(0, 0, 0, 0.5));
+    -webkit-filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
 }
 
 .app-text {
     color: white;
     font-size: 1.8vh;
-    text-shadow: rgba(0, 0, 0, 1) 0 0.5vh 1vh;
+    text-shadow: rgba(0, 0, 0, 1) 0vh 0.3vh 0.3vh;
     width: 120%;
     text-align: center;
+    font-weight: bold;
 }
