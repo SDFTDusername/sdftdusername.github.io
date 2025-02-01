@@ -27,3 +27,15 @@ class AppComponent extends HTMLElement {
     }
 }
 customElements.define("app-component", AppComponent);
+const wallpaperFactor = 1920 / 1080;
+const wallpaper = document.getElementById("wallpaper");
+function onResize() {
+    if (wallpaper) {
+        if (innerWidth / innerHeight > wallpaperFactor)
+            wallpaper.style.backgroundSize = `${innerWidth}px ${innerWidth / wallpaperFactor}px`;
+        else
+            wallpaper.style.backgroundSize = `${innerHeight * wallpaperFactor}px ${innerHeight}px`;
+    }
+}
+onresize = onResize;
+onResize();

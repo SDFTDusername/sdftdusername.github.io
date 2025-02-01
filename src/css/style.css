@@ -1,12 +1,15 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 10000 versions
+*/
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     width: 100vw;
     height: 100vh;
     margin: 0;
-    background-image: url("/src/img/wallpaper.jpg");
-    background-size: 100vw 100vh;
-    /*background-size: calc(100vh * 1.77777777778) 100vh;
-    background-position-x: center;*/
 }
 
 * {
@@ -14,6 +17,18 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.wallpaper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("/src/img/wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 .top-bar {
@@ -27,29 +42,42 @@ body {
     font-size: 3vh;
     display: -webkit-box;
     display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-box;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+            align-items: center;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+            justify-content: center;
 }
 
 .content {
     position: absolute;
     left: 5vh;
     top: 10vh;
+    width: -webkit-calc(100vw - 10vh);
+    width: -moz-calc(100vw - 10vh);
     width: calc(100vw - 10vh);
 }
 
 .app-list {
     display: -webkit-box;
     display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-box;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
+            -webkit-flex-flow: row wrap;
+               -moz-box-orient: horizontal;
+               -moz-box-direction: normal;
             flex-flow: row wrap;
     gap: 5vh 8vh;
 }
@@ -59,14 +87,21 @@ body {
     height: 13vh;
     display: -webkit-box; 
     display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-box;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
-    flex-direction: column;
+    -webkit-flex-direction: column;
+       -moz-box-orient: vertical;
+       -moz-box-direction: normal;
+            flex-direction: column;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+            align-items: center;
 }
 
 .app-link {
@@ -77,6 +112,9 @@ body {
 .app-icon {
     width: 10vh;
     height: 10vh;
+    /*-webkit-border-radius: 1.8vh;
+       -moz-border-radius: 1.8vh;
+            border-radius: 1.8vh;*/
     -webkit-filter: drop-shadow(0 1vh 1vh rgba(0, 0, 0, 0.5));
     filter: drop-shadow(0 1vh 1vh rgba(0, 0, 0, 0.5));
 }
