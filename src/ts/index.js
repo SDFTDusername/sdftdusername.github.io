@@ -50,3 +50,12 @@ function onResize() {
 }
 onresize = onResize;
 onResize();
+const clock = document.getElementById("clock");
+function updateTime() {
+    if (clock) {
+        const date = new Date();
+        clock.textContent = date.toLocaleTimeString();
+    }
+}
+setInterval(updateTime, 10);
+updateTime();
