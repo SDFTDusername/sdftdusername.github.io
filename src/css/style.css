@@ -59,11 +59,11 @@ body {
 
 .content {
     position: absolute;
-    left: 5vh;
-    top: 10vh;
-    width: -webkit-calc(100vw - 10vh);
-    width: -moz-calc(100vw - 10vh);
-    width: calc(100vw - 10vh);
+    left: 3vh;
+    top: 8vh;
+    width: -webkit-calc(100vw - 6vh);
+    width: -moz-calc(100vw - 6vh);
+    width: calc(100vw - 6vh);
 }
 
 .app-list {
@@ -79,12 +79,12 @@ body {
                -moz-box-orient: horizontal;
                -moz-box-direction: normal;
             flex-flow: row wrap;
-    gap: 5vh 8vh;
+    gap: 6vh 3vh;
 }
 
 .app-container {
     width: 10vh;
-    height: 13vh;
+    height: 10vh;
     display: -webkit-box; 
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -121,8 +121,8 @@ body {
 
 .app-text {
     color: white;
-    font-size: 2vh;
+    font-size: 1.8vh;
     text-shadow: rgba(0, 0, 0, 1) 0 0.5vh 1vh;
-    width: 150%;
+    width: 120%;
     text-align: center;
 }
