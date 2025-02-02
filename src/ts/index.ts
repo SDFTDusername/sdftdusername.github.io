@@ -69,28 +69,28 @@ const content = document.getElementById("content");
 
 function onResize() {
     const bodyBoundingRect = document.body.getBoundingClientRect();
-    const lvw = bodyBoundingRect.width;
-    const lvh = bodyBoundingRect.height;
+    const svw = bodyBoundingRect.width;
+    const svh = bodyBoundingRect.height;
 
-    if (lvw / lvh > wallpaperFactor) {
-        document.body.style.backgroundSize = `${lvw}px ${lvw / wallpaperFactor}px`;
-        document.body.style.backgroundPositionY = `${(lvh - lvw / wallpaperFactor) / 2}px`;
+    if (svw / svh > wallpaperFactor) {
+        document.body.style.backgroundSize = `${svw}px ${svw / wallpaperFactor}px`;
+        document.body.style.backgroundPositionY = `${(svh - svw / wallpaperFactor) / 2}px`;
     } else {
-        document.body.style.backgroundSize = `${lvh * wallpaperFactor}px ${lvh}px`;
+        document.body.style.backgroundSize = `${svh * wallpaperFactor}px ${svh}px`;
         document.body.style.backgroundPositionY = "0px";
     }
 
     if (content) {
         // magic numbers
-        const contentWidth = lvw + (lvh / 100 * (-6 + 3));
-        const appWidth = lvh / 100 * (10 + 3);
+        const contentWidth = svw + (svh / 100 * (-6 + 3));
+        const appWidth = svh / 100 * (10 + 3);
 
         const rowAppCount = Math.max(contentWidth / appWidth, 1);
 
         const wholeRowAppCount = Math.floor(rowAppCount);
         const remainderRowAppCount = rowAppCount - wholeRowAppCount;
         
-        const contentOffset = (lvh / 100 * 3) + remainderRowAppCount * appWidth / 2;
+        const contentOffset = (svh / 100 * 3) + remainderRowAppCount * appWidth / 2;
         content.style.left = `${contentOffset}px`;
     }
 }

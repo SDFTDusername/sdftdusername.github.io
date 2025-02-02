@@ -9,8 +9,8 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 
-    width: 100lvw;
-    height: 100lvh;
+    width: 100svw;
+    height: 100svh;
 
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5))), url("/src/img/wallpaper.jpg");
     background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
@@ -29,7 +29,7 @@ body {
 .top-bar {
     position: absolute;
     width: 100%;
-    height: 5lvh;
+    height: 5svh;
     
     background-color: rgba(0, 0, 0, 0.65);
     color: white;
@@ -54,7 +54,7 @@ body {
 
 .content {
     position: absolute;
-    top: 8lvh;
+    top: 8svh;
 }
 
 .app-list {
@@ -65,12 +65,12 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
-    gap: 6lvh 3lvh;
+    gap: 6svh 3svh;
 }
 
 .app-container {
-    width: 10lvh;
-    height: 10lvh;
+    width: 10svh;
+    height: 10svh;
 
     display: -webkit-box;
     display: -ms-flexbox;
@@ -94,10 +94,10 @@ body {
     -o-object-fit: cover;
        object-fit: cover;
 
-    /*border-radius: 1.8lvh;*/
+    /*border-radius: 1.8svh;*/
     -webkit-filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
             filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
-    margin-bottom: 1lvh;
+    margin-bottom: 1svh;
 }
 
 .app-text {
@@ -105,7 +105,7 @@ body {
     text-align: center;
     width: 120%;
 
-    font-size: 1.8lvh;
-    text-shadow: rgba(0, 0, 0, 1) 0lvh 0.3lvh 0.3lvh;
+    font-size: 1.8svh;
+    text-shadow: rgba(0, 0, 0, 1) 0svh 0.3svh 0.3svh;
     font-weight: bold;
 }
