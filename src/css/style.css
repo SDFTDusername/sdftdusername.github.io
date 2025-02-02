@@ -92,7 +92,6 @@ body {
 
 .app-link {
     line-height: 0;
-    margin-bottom: 1vh;
 }
 
 .app-icon {
@@ -103,6 +102,7 @@ body {
             border-radius: 1.8vh;*/
     -webkit-filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
     filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
+    margin-bottom: 1vh;
 }
 
 .app-text {
