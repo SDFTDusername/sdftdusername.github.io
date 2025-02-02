@@ -50,21 +50,24 @@ customElements.define("app-comp", AppComponent);
 const wallpaperFactor = 1920 / 1080;
 const content = document.getElementById("content");
 function onResize() {
-    if (innerWidth / innerHeight > wallpaperFactor) {
-        document.body.style.backgroundSize = `${innerWidth}px ${innerWidth / wallpaperFactor}px`;
-        document.body.style.backgroundPositionY = `${(innerHeight - innerWidth / wallpaperFactor) / 2}px`;
+    const bodyBoundingRect = document.body.getBoundingClientRect();
+    const lvw = bodyBoundingRect.width;
+    const lvh = bodyBoundingRect.height;
+    if (lvw / lvh > wallpaperFactor) {
+        document.body.style.backgroundSize = `${lvw}px ${lvw / wallpaperFactor}px`;
+        document.body.style.backgroundPositionY = `${(lvh - lvw / wallpaperFactor) / 2}px`;
     }
     else {
-        document.body.style.backgroundSize = `${innerHeight * wallpaperFactor}px ${innerHeight}px`;
+        document.body.style.backgroundSize = `${lvh * wallpaperFactor}px ${lvh}px`;
         document.body.style.backgroundPositionY = "0px";
     }
     if (content) {
-        const contentWidth = innerWidth + (innerHeight / 100 * (-6 + 3));
-        const appWidth = innerHeight / 100 * (10 + 3);
+        const contentWidth = lvw + (lvh / 100 * (-6 + 3));
+        const appWidth = lvh / 100 * (10 + 3);
         const rowAppCount = Math.max(contentWidth / appWidth, 1);
         const wholeRowAppCount = Math.floor(rowAppCount);
         const remainderRowAppCount = rowAppCount - wholeRowAppCount;
-        const contentOffset = (innerHeight / 100 * 3) + remainderRowAppCount * appWidth / 2;
+        const contentOffset = (lvh / 100 * 3) + remainderRowAppCount * appWidth / 2;
         content.style.left = `${contentOffset}px`;
     }
 }

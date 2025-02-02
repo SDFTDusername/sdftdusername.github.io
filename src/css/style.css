@@ -9,10 +9,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 
+    width: 100lvw;
+    height: 100lvh;
+
     background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5))), url("/src/img/wallpaper.jpg");
-
     background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
-
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
     background-repeat: no-repeat;
     background-position-x: center;
@@ -72,10 +73,9 @@ body {
     height: 10lvh;
 
     display: -webkit-box;
-
     display: -ms-flexbox;
-
     display: flex;
+
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
