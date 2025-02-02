@@ -93,6 +93,10 @@ body {
             align-items: center;
 }
 
+.app-button {
+    cursor: pointer;
+}
+
 .app-link {
     line-height: 0;
 }
