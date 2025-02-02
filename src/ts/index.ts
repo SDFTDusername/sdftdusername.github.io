@@ -7,7 +7,7 @@ class AppComponent extends HTMLElement {
         // attributes
 
         const app = this.getAttribute("app") || "example"; // code name (notes, gambletown, etc.)
-        const name = this.getAttribute("name") || app; // display name (Notes, Gamble Town, etc.)
+        const name = this.getAttribute("name") || app; // display name (Notes, gamble town, etc.)
         const type = this.getAttribute("type") || "app"; // how it will be opened (app, openurl, redirect)
         const url = this.getAttribute("url") || `/apps/${app}.html`; // what url to open if type is open or redirect
 
