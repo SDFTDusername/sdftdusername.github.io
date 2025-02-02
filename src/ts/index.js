@@ -53,6 +53,7 @@ function onResize() {
     const bodyBoundingRect = document.body.getBoundingClientRect();
     const svw = bodyBoundingRect.width;
     const svh = bodyBoundingRect.height;
+    const svs = Math.min(svw, svh);
     if (svw / svh > wallpaperFactor) {
         document.body.style.backgroundSize = `${svw}px ${svw / wallpaperFactor}px`;
         document.body.style.backgroundPositionY = `${(svh - svw / wallpaperFactor) / 2}px`;
@@ -62,12 +63,12 @@ function onResize() {
         document.body.style.backgroundPositionY = "0px";
     }
     if (content) {
-        const contentWidth = svw + (svh / 100 * (-6 + 3));
-        const appWidth = svh / 100 * (10 + 3);
+        const contentWidth = svw + (svs / 100 * (-6 + 3));
+        const appWidth = svs / 100 * (17.5 + 5);
         const rowAppCount = Math.max(contentWidth / appWidth, 1);
         const wholeRowAppCount = Math.floor(rowAppCount);
         const remainderRowAppCount = rowAppCount - wholeRowAppCount;
-        const contentOffset = (svh / 100 * 3) + remainderRowAppCount * appWidth / 2;
+        const contentOffset = (svs / 100 * 3) + remainderRowAppCount * appWidth / 2;
         content.style.left = `${contentOffset}px`;
     }
 }
