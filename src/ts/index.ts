@@ -97,12 +97,12 @@ onResize();
 
 const clock = document.getElementById("clock");
 
-function updateTime() {
+function updateClock() {
     if (clock) {
         const date = new Date();
         clock.textContent = date.toLocaleTimeString();
     }
 }
 
-setInterval(updateTime, 10);
-updateTime();
+setInterval(updateClock, 1000);
+updateClock();
