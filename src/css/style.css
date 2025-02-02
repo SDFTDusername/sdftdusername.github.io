@@ -7,61 +7,53 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    width: 100vw;
-    height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
     margin: 0;
-    overflow: hidden;
+
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5))), url("/src/img/wallpaper.jpg");
+
+    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
+
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-position-x: center;
 }
 
 * {
     -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.wallpaper {
-    position: absolute;
-    top: -1vh;
-    left: -1vh;
-    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5))), url("/src/img/wallpaper.jpg");
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    width: calc(100vw + 2vh);
-    height: calc(100vh + 2vh);
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 .top-bar {
     position: absolute;
-    left: -1vh;
-    top: 0;
-    width: calc(100vw + 2vh);
-    height: 5vh;
+    width: 100%;
+    height: 5lvh;
+    
     background-color: rgba(0, 0, 0, 0.65);
     color: white;
     -webkit-box-shadow: 0 0.5vh 0.8vh rgba(0, 0, 0, 0.5);
             box-shadow: 0 0.5vh 0.8vh rgba(0, 0, 0, 0.5);
+
     font-size: 3vh;
     font-weight: bold;
+
     display: -webkit-box;
+
     display: -ms-flexbox;
+
     display: flex;
     -webkit-box-align: center;
-    -ms-flex-align: center;
+        -ms-flex-align: center;
             align-items: center;
     -webkit-box-pack: center;
-    -ms-flex-pack: center;
+        -ms-flex-pack: center;
             justify-content: center;
 }
 
 .content {
     position: absolute;
-    top: 8vh;
-    width: calc(100vw - 6vh);
+    top: 8lvh;
 }
 
 .app-list {
@@ -72,21 +64,24 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
-    gap: 6vh 3vh;
+    gap: 6lvh 3lvh;
 }
 
 .app-container {
-    width: 10vh;
-    height: 10vh;
-    display: -webkit-box; 
+    width: 10lvh;
+    height: 10lvh;
+
+    display: -webkit-box;
+
     display: -ms-flexbox;
+
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-    -ms-flex-direction: column;
+        -ms-flex-direction: column;
             flex-direction: column;
     -webkit-box-align: center;
-    -ms-flex-align: center;
+        -ms-flex-align: center;
             align-items: center;
 }
 
@@ -95,21 +90,22 @@ body {
 }
 
 .app-icon {
-    width: 10vh;
-    height: 10vh;
-    /*-webkit-border-radius: 1.8vh;
-       -moz-border-radius: 1.8vh;
-            border-radius: 1.8vh;*/
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+
+    /*border-radius: 1.8lvh;*/
     -webkit-filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
-    filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
-    margin-bottom: 1vh;
+            filter: drop-shadow(0vh 0.3vh 0.3vh rgba(0, 0, 0, 0.5));
+    margin-bottom: 1lvh;
 }
 
 .app-text {
     color: white;
-    font-size: 1.8vh;
-    text-shadow: rgba(0, 0, 0, 1) 0vh 0.3vh 0.3vh;
-    width: 120%;
     text-align: center;
+    width: 120%;
+
+    font-size: 1.8lvh;
+    text-shadow: rgba(0, 0, 0, 1) 0lvh 0.3lvh 0.3lvh;
     font-weight: bold;
 }

@@ -48,14 +48,15 @@ class AppComponent extends HTMLElement {
 }
 customElements.define("app-comp", AppComponent);
 const wallpaperFactor = 1920 / 1080;
-const wallpaper = document.getElementById("wallpaper");
 const content = document.getElementById("content");
 function onResize() {
-    if (wallpaper) {
-        if (innerWidth / innerHeight > wallpaperFactor)
-            wallpaper.style.backgroundSize = `${innerWidth + 4}px ${innerWidth / wallpaperFactor + 4}px`;
-        else
-            wallpaper.style.backgroundSize = `${innerHeight * wallpaperFactor + 4}px ${innerHeight + 4}px`;
+    if (innerWidth / innerHeight > wallpaperFactor) {
+        document.body.style.backgroundSize = `${innerWidth}px ${innerWidth / wallpaperFactor}px`;
+        document.body.style.backgroundPositionY = `${(innerHeight - innerWidth / wallpaperFactor) / 2}px`;
+    }
+    else {
+        document.body.style.backgroundSize = `${innerHeight * wallpaperFactor}px ${innerHeight}px`;
+        document.body.style.backgroundPositionY = "0px";
     }
     if (content) {
         const contentWidth = innerWidth + (innerHeight / 100 * (-6 + 3));
