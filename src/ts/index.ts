@@ -1,7 +1,3 @@
-function openApp(app: string) {
-    console.log(`Opening app: ${app}`);
-}
-
 class AppComponent extends HTMLElement {
     constructor() {
         super();
@@ -40,7 +36,7 @@ class AppComponent extends HTMLElement {
 
             case "app": {
                 image.classList.add("app-button");
-                image.onclick = () => openApp(app);
+                image.onclick = () => openApp(url);
 
                 container.appendChild(image);
                 break;
@@ -76,34 +72,42 @@ class AppComponent extends HTMLElement {
 customElements.define("app-comp", AppComponent);
 
 const wallpaperFactor = 1920 / 1080;
-const content = document.getElementById("content");
+const wallpaper = document.getElementById("wallpaper");
+
+const screenElement = document.getElementById("screen");
+const appList = document.getElementById("app-list");
 
 function onResize() {
-    const bodyBoundingRect = document.body.getBoundingClientRect();
-    const svw = bodyBoundingRect.width;
-    const svh = bodyBoundingRect.height;
-    const svs = Math.min(svw, svh);
+    if (screenElement) {
+        const bodyBoundingRect = document.body.getBoundingClientRect();
+        const bodyWidth = bodyBoundingRect.width;
+        const bodyHeight = bodyBoundingRect.height;
+        const scale = Math.min(bodyWidth, bodyHeight);
 
-    if (svw / svh > wallpaperFactor) {
-        document.body.style.backgroundSize = `${svw}px ${svw / wallpaperFactor}px`;
-        document.body.style.backgroundPositionY = `${(svh - svw / wallpaperFactor) / 2}px`;
-    } else {
-        document.body.style.backgroundSize = `${svh * wallpaperFactor}px ${svh}px`;
-        document.body.style.backgroundPositionY = "0px";
-    }
+        const screenBoundingRect = screenElement.getBoundingClientRect();
+        const width = screenBoundingRect.width;
+        const height = screenBoundingRect.height;
 
-    if (content) {
-        // magic numbers
-        const contentWidth = svw + (svs / 100 * (-6 + 3));
-        const appWidth = svs / 100 * (17.5 + 5);
+        if (wallpaper) {
+            if (width / height > wallpaperFactor)
+                wallpaper.style.backgroundSize = `${width}px ${width / wallpaperFactor}px`;
+            else
+                wallpaper.style.backgroundSize = `${height * wallpaperFactor}px ${height}px`;
+        }
 
-        const rowAppCount = Math.max(contentWidth / appWidth, 1);
+        if (appList) {
+            // magic numbers
+            const contentWidth = width + (scale / 100 * (-6 + 3));
+            const appWidth = scale / 100 * (17.5 + 5);
 
-        const wholeRowAppCount = Math.floor(rowAppCount);
-        const remainderRowAppCount = rowAppCount - wholeRowAppCount;
-        
-        const contentOffset = (svs / 100 * 3) + remainderRowAppCount * appWidth / 2;
-        content.style.left = `${contentOffset}px`;
+            const rowAppCount = Math.max(contentWidth / appWidth, 1);
+
+            const wholeRowAppCount = Math.floor(rowAppCount);
+            const remainderRowAppCount = rowAppCount - wholeRowAppCount;
+            
+            const contentOffset = (scale / 100 * 3) + remainderRowAppCount * appWidth / 2;
+            appList.style.left = `${contentOffset}px`;
+        }
     }
 }
 
@@ -121,3 +125,71 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock();
+
+const homeButton = document.getElementById("home-button");
+let homeButtonPressed = false;
+
+const homebuttonPressSound = new Audio("/src/sounds/homebutton-press.ogg");
+const homebuttonReleaseSound = new Audio("/src/sounds/homebutton-release.ogg");
+
+function playSound(sound: HTMLAudioElement) {
+    const clone = sound.cloneNode(true);
+    if (clone instanceof HTMLAudioElement) {
+        clone.addEventListener("ended", () => clone.remove());
+        clone.play();
+    }
+}
+
+function homeButtonPress(event: Event) {
+    if (homeButtonPressed)
+        return;
+    homeButtonPressed = true;
+
+    event.preventDefault();
+    if (homeButton) {
+        homeButton.style.filter = "brightness(50%)";
+        playSound(homebuttonPressSound);
+        navigator.vibrate(20);
+    }
+}
+
+function homeButtonRelease(event: Event) {
+    if (!homeButtonPressed)
+        return;
+    homeButtonPressed = false;
+
+    event.preventDefault();
+    if (homeButton) {
+        if (appIframe instanceof HTMLIFrameElement) {
+            appIframe.hidden = true;
+            appIframe.src = "";
+        }
+
+        homeButton.style.filter = "";
+        playSound(homebuttonReleaseSound);
+        navigator.vibrate(10);
+    }
+}
+
+if (homeButton) {
+    homeButton.addEventListener("mousedown", (event) => {
+        homeButtonPress(event);
+        const mouseUpEvent = (event: Event) => {
+            homeButtonRelease(event);
+            document.removeEventListener("mouseup", mouseUpEvent);
+        };
+        document.addEventListener("mouseup", mouseUpEvent);
+    });
+
+    homeButton.ontouchstart = homeButtonPress;
+    homeButton.ontouchend = homeButtonRelease;
+}
+
+const appIframe = document.getElementById("app-iframe");
+
+function openApp(url: string) {
+    if (appIframe instanceof HTMLIFrameElement) {
+        appIframe.src = url;
+        appIframe.hidden = false;
+    }
+}
