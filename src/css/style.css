@@ -42,7 +42,7 @@ body {
 }
 
 .home-button {
-    width: calc(15 * var(--svs));
+    width: calc(10 * var(--svs));
     -o-object-fit: cover;
        object-fit: cover;
 
@@ -61,14 +61,14 @@ body {
         top: 0;
         left: 0;
         width: 100%;
-        height: calc(100% - 20 * var(--svs));
+        height: calc(100% - 15 * var(--svs));
     }
     
     .chin {
-        top: calc(100% - 20 * var(--svs));
+        top: calc(100% - 15 * var(--svs));
         left: 0;
         width: 100%;
-        height: calc(20 * var(--svs));
+        height: calc(15 * var(--svs));
     }
 }
 
@@ -76,14 +76,14 @@ body {
     .screen {
         top: 0;
         left: 0;
-        width: calc(100% - 20 * var(--svs));
+        width: calc(100% - 15 * var(--svs));
         height: 100%;
     }
     
     .chin {
         top: 0;
-        left: calc(100% - 20 * var(--svs));
-        width: calc(20 * var(--svs));
+        left: calc(100% - 15 * var(--svs));
+        width: calc(15 * var(--svs));
         height: 100%;
     }
 }
