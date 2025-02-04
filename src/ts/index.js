@@ -122,13 +122,13 @@ function homeButtonRelease(event) {
     homeButtonPressed = false;
     event.preventDefault();
     if (homeButton) {
-        if (appIframe instanceof HTMLIFrameElement) {
-            appIframe.hidden = true;
-            appIframe.src = "";
-        }
         homeButton.style.filter = "";
         playSound(homebuttonReleaseSound);
         navigator.vibrate(10);
+        if (appIframe instanceof HTMLIFrameElement) {
+            appIframe.hidden = true;
+            appIframe.removeAttribute("src");
+        }
     }
 }
 if (homeButton) {
