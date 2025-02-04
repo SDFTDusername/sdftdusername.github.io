@@ -5,14 +5,20 @@
 * Browsers: last 10 versions
 */
 
-@property --svs {
+@property --s { /* Scaling */
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 1svh;
+}
+
+@property --ss { /* Screen Scaling */
     syntax: "<length>";
     inherits: true;
     initial-value: 1svh;
 }
 
 html {
-    --svs: min(1svw, 1svh);
+    --s: min(1svw, 1svh);
 }
 
 body {
@@ -42,7 +48,7 @@ body {
 }
 
 .home-button {
-    width: calc(10 * var(--svs));
+    width: calc(10 * var(--s));
     -o-object-fit: cover;
        object-fit: cover;
 
@@ -60,15 +66,17 @@ body {
     .screen {
         top: 0;
         left: 0;
-        width: 100%;
-        height: calc(100% - 15 * var(--svs));
+        width: 100svw;
+        height: calc(100svh - 15 * var(--s));
+
+        --ss: min(1svw, calc(1svh - 0.15 * var(--s)));
     }
     
     .chin {
-        top: calc(100% - 15 * var(--svs));
+        top: calc(100% - 15 * var(--s));
         left: 0;
         width: 100%;
-        height: calc(15 * var(--svs));
+        height: calc(15 * var(--s));
     }
 }
 
@@ -76,14 +84,16 @@ body {
     .screen {
         top: 0;
         left: 0;
-        width: calc(100% - 15 * var(--svs));
-        height: 100%;
+        width: calc(100svw - 15 * var(--s));
+        height: calc(100svh);
+
+        --ss: min(calc(1svw - 0.15 * var(--s)), 1svh);
     }
     
     .chin {
         top: 0;
-        left: calc(100% - 15 * var(--svs));
-        width: calc(15 * var(--svs));
+        left: calc(100% - 15 * var(--s));
+        width: calc(15 * var(--ss));
         height: 100%;
     }
 }
@@ -94,8 +104,8 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5))), url("/src/img/wallpaper.jpg");
     background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.5))), url("/src/img/wallpaper.jpg");
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url("/src/img/wallpaper.jpg");
     background-size: 100% 100%;
     background-position: center;
@@ -104,14 +114,14 @@ body {
 
 .top-bar {
     width: 100%;
-    height: calc(8 * var(--svs));
+    height: calc(8 * var(--ss));
     
     background-color: rgba(0, 0, 0, 0.65);
     color: white;
-    -webkit-box-shadow: 0 calc(0.5 * var(--svs)) calc(0.8 * var(--svs)) rgba(0, 0, 0, 0.5);
-            box-shadow: 0 calc(0.5 * var(--svs)) calc(0.8 * var(--svs)) rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 calc(0.5 * var(--ss)) calc(0.8 * var(--ss)) rgba(0, 0, 0, 0.5);
+            box-shadow: 0 calc(0.5 * var(--ss)) calc(0.8 * var(--ss)) rgba(0, 0, 0, 0.5);
 
-    font-size: calc(4 * var(--svs));
+    font-size: calc(4 * var(--ss));
     font-weight: bold;
 
     display: -webkit-box;
@@ -128,12 +138,12 @@ body {
 
 .content {
     width: 100%;
-    height: calc(100% - 8 * var(--svs));
+    height: calc(100% - 8 * var(--ss));
 }
 
 .app-list {
     position: absolute;
-    top: calc(13 * var(--svs));
+    top: calc(13 * var(--ss));
     /* left is calculated in JS */
 
     display: -webkit-box;
@@ -143,21 +153,21 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
-    gap: calc(5 * var(--svs)) calc(5 * var(--svs));
+    gap: calc(5 * var(--ss)) calc(5 * var(--ss));
 }
 
 .app-iframe {
     position: absolute;
     left: 0;
-    top: calc(8 * var(--svs));
+    top: calc(8 * var(--ss));
     width: 100%;
-    height: calc(100% - 8 * var(--svs));
+    height: calc(100% - 8 * var(--ss));
     border: none;
     z-index: 1;
 }
 
 .app-container {
-    width: calc(17.5 * var(--svs));
+    width: calc(17.5 * var(--ss));
 
     display: -webkit-box;
     display: -ms-flexbox;
@@ -185,10 +195,10 @@ body {
     -o-object-fit: cover;
        object-fit: cover;
 
-    /*border-radius: calc(1.8 * var(--svs));*/
-    -webkit-filter: drop-shadow(0vh calc(0.3 * var(--svs)) calc(0.3 * var(--svs)) rgba(0, 0, 0, 0.5));
-            filter: drop-shadow(0vh calc(0.3 * var(--svs)) calc(0.3 * var(--svs)) rgba(0, 0, 0, 0.5));
-    margin-bottom: var(--svs);
+    /*border-radius: calc(1.8 * var(--ss));*/
+    -webkit-filter: drop-shadow(0vh calc(0.3 * var(--ss)) calc(0.3 * var(--ss)) rgba(0, 0, 0, 0.5));
+            filter: drop-shadow(0vh calc(0.3 * var(--ss)) calc(0.3 * var(--ss)) rgba(0, 0, 0, 0.5));
+    margin-bottom: var(--ss);
 }
 
 .app-text {
@@ -196,7 +206,7 @@ body {
     text-align: center;
     width: 120%;
 
-    font-size: calc(3 * var(--svs));
-    text-shadow: rgba(0, 0, 0, 1) 0svh calc(0.5 * var(--svs)) calc(0.5 * var(--svs));
+    font-size: calc(3 * var(--ss));
+    text-shadow: rgba(0, 0, 0, 1) 0svh calc(0.5 * var(--ss)) calc(0.5 * var(--ss));
     font-weight: bold;
 }

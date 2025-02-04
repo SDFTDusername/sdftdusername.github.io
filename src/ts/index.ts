@@ -82,30 +82,31 @@ function onResize() {
         const bodyBoundingRect = document.body.getBoundingClientRect();
         const bodyWidth = bodyBoundingRect.width;
         const bodyHeight = bodyBoundingRect.height;
-        const scale = Math.min(bodyWidth, bodyHeight);
+        const scaling = Math.min(bodyWidth, bodyHeight);
 
         const screenBoundingRect = screenElement.getBoundingClientRect();
-        const width = screenBoundingRect.width;
-        const height = screenBoundingRect.height;
+        const screenWidth = screenBoundingRect.width;
+        const screenHeight = screenBoundingRect.height;
+        const screenScaling = Math.min(screenWidth, screenHeight);
 
         if (wallpaper) {
-            if (width / height > wallpaperFactor)
-                wallpaper.style.backgroundSize = `${width}px ${width / wallpaperFactor}px`;
+            if (screenWidth / screenHeight > wallpaperFactor)
+                wallpaper.style.backgroundSize = `${screenWidth}px ${screenWidth / wallpaperFactor}px`;
             else
-                wallpaper.style.backgroundSize = `${height * wallpaperFactor}px ${height}px`;
+                wallpaper.style.backgroundSize = `${screenHeight * wallpaperFactor}px ${screenHeight}px`;
         }
 
         if (appList) {
             // magic numbers
-            const contentWidth = width + (scale / 100 * (-6 + 3));
-            const appWidth = scale / 100 * (17.5 + 5);
+            const contentWidth = screenWidth + (screenScaling / 100 * (-6 + 3));
+            const appWidth = screenScaling / 100 * (17.5 + 5);
 
             const rowAppCount = Math.max(contentWidth / appWidth, 1);
 
             const wholeRowAppCount = Math.floor(rowAppCount);
             const remainderRowAppCount = rowAppCount - wholeRowAppCount;
             
-            const contentOffset = (scale / 100 * 3) + remainderRowAppCount * appWidth / 2;
+            const contentOffset = (screenScaling / 100 * 3) + remainderRowAppCount * appWidth / 2;
             appList.style.left = `${contentOffset}px`;
         }
     }
