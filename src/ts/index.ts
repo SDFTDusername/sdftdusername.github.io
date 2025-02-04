@@ -130,8 +130,8 @@ updateClock();
 const homeButton = document.getElementById("home-button");
 let homeButtonPressed = false;
 
-const homebuttonPressSound = new Audio("/src/sounds/homebutton-press.ogg");
-const homebuttonReleaseSound = new Audio("/src/sounds/homebutton-release.ogg");
+const homebuttonPressSound = new Audio("/src/sounds/homebutton-press.mp3");
+const homebuttonReleaseSound = new Audio("/src/sounds/homebutton-release.mp3");
 
 function playSound(sound: HTMLAudioElement) {
     const clone = sound.cloneNode(true);
