@@ -178,6 +178,7 @@ function homeButtonRelease(event: Event) {
 
         if (appIframe instanceof HTMLIFrameElement) {
             appIframe.hidden = true;
+            appIframe.src = "";
             appIframe.removeAttribute("src");
         }
     }
