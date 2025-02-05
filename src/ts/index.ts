@@ -136,9 +136,20 @@ const homebuttonReleaseSound = new Audio("/src/sounds/homebutton-release.mp3");
 function playSound(sound: HTMLAudioElement) {
     const clone = sound.cloneNode(true);
     if (clone instanceof HTMLAudioElement) {
-        clone.addEventListener("ended", () => clone.remove());
-        clone.play();
+        try {
+            clone.addEventListener("ended", () => clone.remove());
+            clone.play();
+        } catch {
+            clone.remove();
+        }
     }
+}
+
+function vibrate(ms: number) {
+    try {
+        navigator.vibrate(ms);
+    }
+    catch {}
 }
 
 function homeButtonPress(event: Event) {
@@ -150,7 +161,7 @@ function homeButtonPress(event: Event) {
     if (homeButton) {
         homeButton.style.filter = "brightness(50%)";
         playSound(homebuttonPressSound);
-        navigator.vibrate(20);
+        vibrate(20);
     }
 }
 
@@ -163,7 +174,7 @@ function homeButtonRelease(event: Event) {
     if (homeButton) {
         homeButton.style.filter = "";
         playSound(homebuttonReleaseSound);
-        navigator.vibrate(10);
+        vibrate(10);
 
         if (appIframe instanceof HTMLIFrameElement) {
             appIframe.hidden = true;
